@@ -1,12 +1,11 @@
-name: Build and Publish to JFrog Artifactory
+name: "Dotnet-GithubActions-Example"
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: 
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   build:
@@ -27,7 +26,7 @@ jobs:
         run: jf dotnet-config --repo-resolve=dhanush-nuget-remote
 
       - name: Restore dependencies
-        run: jf dotnet restore --build-name=my-build --build-number=${{ github.run_number }}
+        run: jf dotnet restore --build-name=my-build-nuget --build-number=${{ github.run_number }}
 
       - name: Perform Security Audit
         run: jf audit
@@ -36,10 +35,10 @@ jobs:
         run: dotnet pack
 
       - name: Upload NuGet package to Artifactory
-        run: jf rt u "*.nupkg" ${{ secrets.NUGET_DEPLOYMENT_REPOSITORY }}/ --build-name=my-build --build-number=${{ github.run_number }}
+        run: jf rt u "*.nupkg" dhanush-local-nuget --build-name=my-build-nuget --build-number=${{ github.run_number }}
 
       - name: Collect environment variables
-        run: jf rt bce my-build ${{ github.run_number }}
+        run: jf rt bce my-build-nuget ${{ github.run_number }}
 
       - name: Publish Build Info
-        run: jf rt bp my-build ${{ github.run_number }}
+        run: jf rt bp my-build-nuget ${{ github.run_number }}
