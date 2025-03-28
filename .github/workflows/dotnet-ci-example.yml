@@ -34,7 +34,7 @@ jobs:
         run: jf audit
 
       - name: Build the project
-        run: dotnet pack multi-example/*
+        run: dotnet pack multi-example/TestSolution.sln
 
       - name: Upload NuGet package to Artifactory
         run: jf rt u "*.nupkg" dhanush-local-nuget --build-name=my-build-nuget --build-number=${{ github.run_number }}
