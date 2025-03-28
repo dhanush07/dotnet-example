@@ -14,13 +14,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-     - name: Setup JFrog CLI
-       uses: jfrog/setup-jfrog-cli@v4
-       env:  
-           JF_URL: https://dhanushvm07.jfrog.io 
-       with:
-           oidc-provider-name: dhanushoidc
-           oidc-audience: dhanushoidc
+      - name: Setup JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v4
+        env:  
+          JF_URL: https://dhanushvm07.jfrog.io
+        with:
+          oidc-provider-name: dhanushoidc
+          oidc-audience: dhanushoidc
 
       - name: Configure NuGet Repository
         run: jf dotnet-config --repo-resolve=dhanush-nuget-remote
