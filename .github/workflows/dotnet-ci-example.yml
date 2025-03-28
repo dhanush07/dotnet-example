@@ -21,7 +21,10 @@ jobs:
         with:
           oidc-provider-name: dhanushoidcdotnet
           oidc-audience: dhanushoidcdotnet
-
+          
+      - name: Run JFrog CLI Ping
+        run: jf rt ping
+        
       - name: Configure NuGet Repository
         run: jf dotnet-config --repo-resolve=dhanush-nuget-remote
 
