@@ -25,6 +25,9 @@ jobs:
       - name: Run JFrog CLI Ping
         run: jf rt ping
         
+      - name: Directory Switch
+        run: cd multi-example
+        
       - name: Configure NuGet Repository
         run: jf dotnet-config --repo-resolve=dhanush-nuget-remote
 
