@@ -37,7 +37,7 @@ jobs:
         run: dotnet pack multi-example/TestSolution.sln
 
       - name: Upload NuGet package to Artifactory
-        run: jf rt u "*.nupkg" dhanush-local-nuget --build-name=my-build-nuget --build-number=${{ github.run_number }}
+        run: jf rt u "*.nupkg" dhanush-nuget-local --build-name=my-build-nuget --build-number=${{ github.run_number }}
 
       - name: Collect environment variables
         run: jf rt bce my-build-nuget ${{ github.run_number }}
