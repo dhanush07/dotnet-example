@@ -19,8 +19,8 @@ jobs:
         env:  
           JF_URL: https://dhanushvm07.jfrog.io
         with:
-          oidc-provider-name: dhanushoidcdotnet
-          oidc-audience: dhanushoidcdotnet
+          oidc-provider-name: dhanushoidc
+          oidc-audience: dhanushoidc
           
       - name: Run JFrog CLI Ping
         run: jf rt ping
