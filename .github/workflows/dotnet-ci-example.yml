@@ -19,8 +19,8 @@ jobs:
         env:  
           JF_URL: https://dhanushvm07.jfrog.io
         with:
-          oidc-provider-name: dhanushoidc
-          oidc-audience: dhanushoidc
+          oidc-provider-name: dhanushoidcdotnet
+          oidc-audience: dhanushoidcdotnet
 
       - name: Configure NuGet Repository
         run: jf dotnet-config --repo-resolve=dhanush-nuget-remote
