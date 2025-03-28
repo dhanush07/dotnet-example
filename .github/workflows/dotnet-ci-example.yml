@@ -25,14 +25,13 @@ jobs:
       - name: Run JFrog CLI Ping
         run: jf rt ping
         
-      - name: Directory Switch
-        run: cd multi-example
-        
       - name: Configure NuGet Repository
         run: jf dotnet-config --repo-resolve=dhanush-nuget-remote
 
-      - name: Restore dependencies
-        run: jf dotnet restore --build-name=my-build-nuget --build-number=${{ github.run_number }}
+      - name: Reslove dependencies
+        run: |
+          cd multi-example
+          jf dotnet restore --build-name=my-build-nuget --build-number=${{ github.run_number }}
 
       - name: Perform Security Audit
         run: jf audit
